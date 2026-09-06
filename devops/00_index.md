@@ -10,20 +10,23 @@
 Статус проставляется на уровне каждой карточки (поле **Статус** в конце) — обновляй его по факту, когда реально прогнал тему вслух или руками.
 
 ## Порядок изучения — от базы к продвинутому
-Linux → данные → стриминг/наблюдаемость → контейнеры → Kubernetes → Istio/GitOps → отказоустойчивость (сквозной синтез) → сети/прокси. Каждый слой ложится на предыдущий: контейнеры держатся на namespaces/cgroups Linux, Kubernetes — на контейнерах, Istio — на Kubernetes, GitOps — на декларативности Kubernetes, блок HA связывает Patroni/Kafka/etcd/Istio в одну сквозную тему (кворум, split-brain, failover, RTO/RPO).
+Linux → данные → стриминг/наблюдаемость → контейнеры → Kubernetes → Istio/GitOps → отказоустойчивость (сквозной синтез) → сети/прокси → AI-инфраструктура. Каждый слой ложится на предыдущий: контейнеры держатся на namespaces/cgroups Linux, Kubernetes — на контейнерах, Istio — на Kubernetes, GitOps — на декларативности Kubernetes, блок HA связывает Patroni/Kafka/etcd/Istio в одну сквозную тему (кворум, split-brain, failover, RTO/RPO), а Блок 10 — новый вертикальный срез поверх Kubernetes/Observability/GitOps под ИИ-нагрузки (GPU-scheduling, LLM-serving, RAG, LLMOps).
+
+> AI-тема разложена на две разные оси, которые легко перепутать: **Блок 10** — это эксплуатация ИИ-систем как продакшен-нагрузки (MLOps/LLMOps); **OB-07** (Блок 3) — это использование ИИ как инструмента самой эксплуатации обычной инфраструктуры (AIOps).
 
 ## Файлы банка (по блокам)
 | Блок | Файл | Карточек |
 |------|------|----------|
 | 1. Linux (база) | `01_linux.md` | 19 (LX-01…20, без LX-16) |
 | 2. Данные (PostgreSQL/Patroni/PgBouncer/ClickHouse/Liquibase) | `02_data.md` | теория + 16 (PG×14, CH, LB) |
-| 3. Стриминг и наблюдаемость (Kafka/ELK/Fluent Bit/SLO/Prometheus) | `03_streaming_observability.md` | 11 (KF×5, OB×6) |
+| 3. Стриминг и наблюдаемость (Kafka/ELK/Fluent Bit/SLO/Prometheus/AIOps) | `03_streaming_observability.md` | 12 (KF×5, OB×7) |
 | 4. Контейнеры (Docker) | `04_containers.md` | 7 (DK-01…07) |
 | 5. Kubernetes | `05_kubernetes.md` | теория + 17 (K8S-01…17) |
 | 6. Istio / Service Mesh | `06_istio.md` | 7 (IS-01…07) |
 | 7. GitOps / ArgoCD / CI-CD / деплой-стратегии | `07_gitops_cicd.md` | 9 (GO-01…09) |
 | 8. Отказоустойчивость / кластеризация / HA (сквозной синтез) | `08_ha.md` | 9 (HA-01…09) |
 | 9. Сети и прокси (Nginx / HAProxy / Envoy / Traefik ↔ Istio) | `09_network_proxy.md` | 6 (NX-01…06) |
+| 10. AI-инфраструктура и MLOps (GPU/serving/RAG/LLMOps/безопасность ИИ) | `10_ai_mlops.md` | теория + 8 (AI-01…08) |
 
 ## Формат карточки
 Вопрос → **Суть** (одна фраза на понимание) → **За 30–60 сек** (что сказать сразу) → **Глубокий ответ** (механика, нюансы, связи с другими карточками) → **Follow-ups** (дерево уточняющих вопросов) → иногда «Руками» (как сформулировать через реальный опыт) и «Подводные камни» → **Статус**.
