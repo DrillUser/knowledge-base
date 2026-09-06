@@ -17,7 +17,7 @@ Linux → данные → стриминг/наблюдаемость → ко�
 ## Файлы банка (по блокам)
 | Блок | Файл | Карточек |
 |------|------|----------|
-| 1. Linux (база) | `01_linux.md` | 19 (LX-01…20, без LX-16) |
+| 1. Linux (база) | `01_linux.md` | 20 (LX-01…20) |
 | 2. Данные (PostgreSQL/Patroni/PgBouncer/ClickHouse/Liquibase) | `02_data.md` | теория + 16 (PG×14, CH, LB) |
 | 3. Стриминг и наблюдаемость (Kafka/ELK/Fluent Bit/SLO/Prometheus/AIOps) | `03_streaming_observability.md` | 12 (KF×5, OB×7) |
 | 4. Контейнеры (Docker) | `04_containers.md` | 7 (DK-01…07) |
