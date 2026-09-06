@@ -13,9 +13,9 @@
 | 1 — критично | Kubernetes, **Istio** ⭐, **GitOps/ArgoCD** ⭐, Linux deep |
 | 2 | Данные (Postgres/Patroni/PgBouncer/ClickHouse/Liquibase), Observability/SRE (SLO+Prometheus) |
 | 3 | Kafka (добить), ELK/Fluent Bit, деплой-стратегии, Bash/Python/Jinja |
-| 4 — точечно добить | Vault, Terraform (карточек пока 0 — см. ниже) |
+| 4 — освежить | Docker (карточки есть, Блок 4) |
 
-> Nginx из этого тира выведен: он давно перерос «освежить» и закрыт отдельным блоком `09_network_proxy.md` (6 карточек). Vault и Docker, наоборот, пока представлены только вскользь — упоминаниями внутри чужих карточек (K8S-08, GO-04/05, DK-07), без своих карточек; Terraform не упомянут вообще нигде в банке.
+> Nginx и Vault/Terraform из этого тира выведены: Nginx давно закрыт отдельным блоком `09_network_proxy.md` (6 карточек), Vault и Terraform получили свои карточки GO-09 и GO-08 в `07_gitops_cicd.md`. Освежать по этому тиру реально осталось только Docker (Блок 4, `04_containers.md`) — базовые карточки там есть, но давно не прогонялись вслух.
 
 ⭐ — любимые темы интервьюера. Он копает каждый вопрос вглубь, силён в Linux, топит за GitOps и евангелизм.
 
@@ -26,12 +26,12 @@
 |------|------|----------|--------|
 | 1. Linux (база) | `01_linux.md` | 19 (LX-01…20, без 16) | в работе |
 | 2. Данные (PostgreSQL/Patroni/PgBouncer/ClickHouse/Liquibase) | `02_data.md` | теория + 16 (PG×14, CH, LB) | переделан с нуля |
-| 3. Стриминг и наблюдаемость (Kafka/ELK/Fluent Bit/SLO/Prometheus) | `03_streaming_observability.md` | 9 (KF×5, OB×4) | v1 готова |
+| 3. Стриминг и наблюдаемость (Kafka/ELK/Fluent Bit/SLO/Prometheus) | `03_streaming_observability.md` | 11 (KF×5, OB×6) | v1 готова |
 | 4. Контейнеры (Docker) | `04_containers.md` | 7 (DK-01…07) | в работе |
-| 5. Kubernetes | `05_kubernetes.md` | теория + 15 (K8S-01…15) | переделан (теория+карточки) |
+| 5. Kubernetes | `05_kubernetes.md` | теория + 17 (K8S-01…17) | переделан (теория+карточки) |
 | 6. Istio / Service Mesh ⭐ | `06_istio.md` | 7 (IS-01…07) | v1 готова |
-| 7. GitOps / ArgoCD / CI-CD / деплой-стратегии ⭐ | `07_gitops_cicd.md` | 7 (GO-01…07) | v1 готова |
-| 8. Отказоустойчивость / кластеризация / HA (сквозной синтез) | `08_ha.md` | 7 (HA-01…07) | v1 готова |
+| 7. GitOps / ArgoCD / CI-CD / деплой-стратегии ⭐ | `07_gitops_cicd.md` | 9 (GO-01…09, вкл. Helm/Kustomize, Terraform, Vault) | v1 готова |
+| 8. Отказоустойчивость / кластеризация / HA (сквозной синтез) | `08_ha.md` | 9 (HA-01…09, вкл. ClickHouse HA, backup/DR) | v1 готова |
 | 9. Сети и прокси (Nginx / HAProxy / Envoy / Traefik ↔ Istio) | `09_network_proxy.md` | 6 (NX-01…06) | v1 готова |
 
 > «v1 готова» = заложена первая партия ключевых карточек; глубину докручиваем поблочно (правки + мок), как делали Linux.
@@ -42,7 +42,7 @@
 - **Неделя 3 — Стриминг и наблюдаемость:** Kafka + Kafka Connect, ELK/Fluent Bit, Observability/SRE (SLI/SLO/error budget, Prometheus).
 - **Неделя 4 — Контейнеры и оркестрация:** Docker (namespaces/cgroups в деле), Kubernetes core.
 - **Неделя 5 — Mesh, GitOps, релизы:** Istio ⭐, GitOps/ArgoCD ⭐, деплой-стратегии (blue-green / canary / rolling / shadow).
-- **Неделя 6 — Синтез и прогон:** ⭐ этап «Отказоустойчивость / кластеризация / HA» (сквозная тема — Patroni, репликация Kafka, ClickHouse, k8s, Istio: кворум, split-brain, failover, RTO/RPO) + мок-интервью + освежение Nginx/Vault/Terraform.
+- **Неделя 6 — Синтез и прогон:** ⭐ этап «Отказоустойчивость / кластеризация / HA» (сквозная тема — Patroni, репликация Kafka, ClickHouse, k8s, Istio: кворум, split-brain, failover, RTO/RPO, бэкапы/DR) + мок-интервью + освежение Nginx/Docker (Vault/Terraform уже разобраны в Блоке 7, GO-08/09).
 
 > Сквозной этап HA вынесен отдельно специально: отказоустойчивость — это принцип, который интервьюер проверяет «насквозь» (как не теряются данные при падении ноды? что такое split-brain и как Patroni его избегает? кворум в etcd/Kafka?). Разбираем его, когда базовые кирпичи на месте.
 
