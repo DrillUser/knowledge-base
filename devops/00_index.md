@@ -13,7 +13,9 @@
 | 1 — критично | Kubernetes, **Istio** ⭐, **GitOps/ArgoCD** ⭐, Linux deep |
 | 2 | Данные (Postgres/Patroni/PgBouncer/ClickHouse/Liquibase), Observability/SRE (SLO+Prometheus) |
 | 3 | Kafka (добить), ELK/Fluent Bit, деплой-стратегии, Bash/Python/Jinja |
-| 4 — освежить | Nginx, Vault, Docker/Terraform |
+| 4 — точечно добить | Vault, Terraform (карточек пока 0 — см. ниже) |
+
+> Nginx из этого тира выведен: он давно перерос «освежить» и закрыт отдельным блоком `09_network_proxy.md` (6 карточек). Vault и Docker, наоборот, пока представлены только вскользь — упоминаниями внутри чужих карточек (K8S-08, GO-04/05, DK-07), без своих карточек; Terraform не упомянут вообще нигде в банке.
 
 ⭐ — любимые темы интервьюера. Он копает каждый вопрос вглубь, силён в Linux, топит за GitOps и евангелизм.
 
@@ -26,9 +28,9 @@
 | 2. Данные (PostgreSQL/Patroni/PgBouncer/ClickHouse/Liquibase) | `02_data.md` | теория + 16 (PG×14, CH, LB) | переделан с нуля |
 | 3. Стриминг и наблюдаемость (Kafka/ELK/Fluent Bit/SLO/Prometheus) | `03_streaming_observability.md` | 9 (KF×5, OB×4) | v1 готова |
 | 4. Контейнеры (Docker) | `04_containers.md` | 7 (DK-01…07) | в работе |
-| 5. Kubernetes | `05_kubernetes.md` | теория + 14 (K8S-01…14) | переделан (теория+карточки) |
+| 5. Kubernetes | `05_kubernetes.md` | теория + 15 (K8S-01…15) | переделан (теория+карточки) |
 | 6. Istio / Service Mesh ⭐ | `06_istio.md` | 7 (IS-01…07) | v1 готова |
-| 7. GitOps / ArgoCD / CI-CD / деплой-стратегии ⭐ | `07_gitops_cicd.md` | 6 (GO-01…06) | v1 готова |
+| 7. GitOps / ArgoCD / CI-CD / деплой-стратегии ⭐ | `07_gitops_cicd.md` | 7 (GO-01…07) | v1 готова |
 | 8. Отказоустойчивость / кластеризация / HA (сквозной синтез) | `08_ha.md` | 7 (HA-01…07) | v1 готова |
 | 9. Сети и прокси (Nginx / HAProxy / Envoy / Traefik ↔ Istio) | `09_network_proxy.md` | 6 (NX-01…06) | v1 готова |
 
@@ -60,9 +62,10 @@
 5. **LX-06** — swappiness для БД объяснять через **латентность/major page fault**, не консистентность.
 
 ### Прогресс по остальным блокам
-Все карточки Блоков 2–8 пока 🔴 (свежие, не прогнанные), кроме помеченных как 🟡 по реальному опыту:
+Все карточки Блоков 2–9 пока 🔴 (свежие, не прогнанные), кроме помеченных как 🟡 по реальному опыту:
 - 🟡 KF-01…05 (Kafka — недавняя проработка), OB-04 (ELK/Fluent Bit — руки), GO-05 (Ansible).
 - Блок 4 (Docker): 🟢 DK-01, DK-02, DK-05; 🟡 DK-03, DK-04, DK-06; 🔴 DK-07.
+- Блок 9 (Nginx/HAProxy/Envoy/Traefik) целиком 🔴 — не забыть при синтезе (Nginx у тебя сильная сторона руками, но карточки ещё не прогнаны вслух).
 Проставляем настоящие статусы по итогам мок-опросов.
 - **HIGH:** ✅ добавлены — OverlayFS (перенесён в Docker → DK-06), SSH (LX-17), DNS (LX-18), TCP-состояния (LX-19).
 - **MEDIUM:** eBPF / perf / bpftrace (advanced-трейсинг, любит интервьюер); /proc и /sys как интерфейсы ядра; типы ФС (ext4/xfs, журналирование).
